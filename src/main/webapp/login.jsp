@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><%= "- HOME -" %>
+    <title><%= "- LOGIN -" %>
     </title>
     <link href="css/stylesheet.css" rel="stylesheet" type="text/css">
     <!-- Latest compiled and minified CSS -->
