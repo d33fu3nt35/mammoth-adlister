@@ -9,7 +9,8 @@ body {
     background-size: cover;
 }
 
-#header {
+.header {
+    text-align: center;
     color: #FFF4F4;
 }
 
@@ -26,9 +27,43 @@ body {
 
 .card {
     background-color: #e5d4a5;
-    padding: 20px 25px 30px;
+    padding: 20px 25px 20px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+    margin-top: 150px;
     border-radius: 2px;
     box-shadow: 0px 2px 20px 7px rgba(0, 0, 0, 0.5);
+}
+
+.form-signin #inputUsername,
+.form-signin #inputPassword {
+    text-align: center;
+    direction: ltr;
+    height: 45px;
+    font-size: 25px;
+}
+
+.form-signin input[type=username],
+.form-signin input[type=password],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control {
+    border-radius: 30px;
+}
+
+.btn.btn-signin {
+    background-color: rgb(85, 96, 101);
+    padding: 0px;
+    font-weight: 100;
+    font-size: 25px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.8s;
 }
