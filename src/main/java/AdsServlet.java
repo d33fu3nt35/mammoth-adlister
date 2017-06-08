@@ -11,16 +11,15 @@ import java.util.List;
  */
 @WebServlet(name = "AdsServlet", urlPatterns = "/ads")
 public class AdsServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ListAdsDao adsDao = new ListAdsDao();
         List<Ad> ads = adsDao.all();
         request.setAttribute("ads", ads);
-        request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
 
     }
 }
