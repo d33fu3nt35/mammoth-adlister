@@ -19,7 +19,7 @@ public class AdsServlet extends HttpServlet {
         ListAdsDao adsDao = new ListAdsDao();
         List<Ad> ads = adsDao.all();
         request.setAttribute("ads", ads);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
     }
 }

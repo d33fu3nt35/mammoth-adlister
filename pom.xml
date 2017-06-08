@@ -23,6 +23,10 @@
         </plugins>
     </build>
 
+    <properties>
+        <tomcat.version>8.5.15</tomcat.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
