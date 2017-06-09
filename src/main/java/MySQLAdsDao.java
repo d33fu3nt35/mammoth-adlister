@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.mysql.jdbc.Driver;
 
 /**
@@ -43,11 +44,6 @@ public class MySQLAdsDao implements Ads {
 
         Statement stmt = connection.createStatement();
 
-        // these strings could come from a POST request
-        // that is, an HTML form (or AJAX request)
-//        String adTitle = "'Xbox'"; // request.getParameter("deptNo");
-//        String description = "'Blahblahblah'";
-
         String query = "INSERT INTO ads(title, description, user_id) VALUES";
         query += "('" + adTitle + "', '" + description + "', 1)";
         System.out.println(query);
@@ -57,30 +53,30 @@ public class MySQLAdsDao implements Ads {
     }
 
     // todo: run the query to get all the ads
-        public static List<Ad> selectExample(Connection connection) throws SQLException {
-            String query = "SELECT * FROM ads";
-            System.out.println(query);
+    public static List<Ad> selectExample(Connection connection) throws SQLException {
+        String query = "SELECT * FROM ads";
+        System.out.println(query);
 
-            Statement stmt = connection.createStatement();
+        Statement stmt = connection.createStatement();
 
-            ResultSet rs = stmt.executeQuery(query);
+        ResultSet rs = stmt.executeQuery(query);
 
-            List<Ad> ads = new ArrayList();
+        List<Ad> ads = new ArrayList();
 
-            // move the cursor through the results
-            // this while loop will run once for each row in the results
-            while(rs.next()) {
-                long adId = rs.getLong("id");
-                long adUserId = rs.getLong("user_id");
-                String adTitle = rs.getString("title");
-                String description = rs.getString("description");
-                Ad a = new Ad(adId, adUserId, adTitle, description);
-                ads.add(a);
-            }
-
-            return ads;
+        // move the cursor through the results
+        // this while loop will run once for each row in the results
+        while (rs.next()) {
+            long adId = rs.getLong("id");
+            long adUserId = rs.getLong("user_id");
+            String adTitle = rs.getString("title");
+            String description = rs.getString("description");
+            Ad a = new Ad(adId, adUserId, adTitle, description);
+            ads.add(a);
         }
 
+        return ads;
     }
 
-        // todo: use the results of that query to create a list of Ad objects
+}
+
+// todo: use the results of that query to create a list of Ad objects
