@@ -17,6 +17,8 @@ public class TestServlet extends HttpServlet {
             String password = request.getParameter("password");
             boolean validAttempt = (username.equals("admin") && password.equals("password"));
 
+
+
             if (validAttempt) {
                 request.getSession().setAttribute("username", username);
                 response.sendRedirect("/profile");
@@ -27,6 +29,11 @@ public class TestServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (request.getSession().getAttribute("username") != null) {
+            response.sendRedirect("/profile");
+            return;
+        }
 
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 
