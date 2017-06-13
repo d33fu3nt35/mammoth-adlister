@@ -1,4 +1,5 @@
 package com.codeup.adlister.dao;
+
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.jdbc.Driver;
@@ -14,19 +15,17 @@ public class MySQLUsersDao implements Users {
 
     Connection connection = null;
 
-    public MySQLUsersDao() throws SQLException {
-        Config config = new Config();
+    public MySQLUsersDao(Config config) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            connection = DriverManager.getConnection(
+                    config.getUrl(),
+                    config.getUsername(),
+                    config.getPassword()
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error connecting to the database!", e);
         }
-        DriverManager.registerDriver(new Driver());
-        connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUsername(),
-                config.getPassword()
-        );
     }
 
     @Override
@@ -44,7 +43,7 @@ public class MySQLUsersDao implements Users {
 
         try {
             PreparedStatement stmt = connection.prepareStatement(
-                "INSERT INTO users(username , email, password) VALUES (?, ?, ?)",
+                    "INSERT INTO users(username , email, password) VALUES (?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS
             );
             stmt.setString(1, user.getUsername());
@@ -73,5 +72,21 @@ public class MySQLUsersDao implements Users {
             users.add(extractUser(rs));
         }
         return users;
+    }
+
+    public User findByUsername(String username) {
+        // select * from users where username = ?
+        PreparedStatement stmt = null;
+        try {
+
+            stmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            stmt.setString(1, username);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            return extractUser(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving user!", e);
+        }
     }
 }

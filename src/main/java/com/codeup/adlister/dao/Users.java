@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface Users {
     Long insertUser(User user) throws SQLException;
+    User findByUsername (String username);
 }

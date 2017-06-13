@@ -9,6 +9,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Welcome to the registration page!</h1>
+    <p>${error}</p>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username</label>
@@ -21,6 +22,10 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input id="password" name="password" class="form-control" type="password">
+        </div>
+        <div class="form-group">
+            <label for="confirm">Confirm Password</label>
+            <input id="confirm" name="confirm" class="form-control" type="password">
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>
