@@ -8,8 +8,10 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
+    <div class="form-container">
     <h1>Welcome to the registration page!</h1>
     <p>${error}</p>
+        <hr>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username</label>
@@ -29,6 +31,7 @@
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>
+    </div>
 </div>
 </body>
 </html>
