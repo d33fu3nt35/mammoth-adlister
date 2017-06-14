@@ -2,15 +2,16 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value="Your Profile"/>
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
-    <div class="container">
-        <h1>Welcome, ${sessionScope.user}!</h1>
-    </div>
+<div class="container">
+    <!-- TODO: use c:out here -->
+    <h1>Welcome, ${sessionScope.user}!</h1>
+</div>
 
 </body>
 </html>

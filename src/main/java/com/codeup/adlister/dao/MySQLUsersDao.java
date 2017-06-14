@@ -83,8 +83,10 @@ public class MySQLUsersDao implements Users {
             stmt.setString(1, username);
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
-            rs.next();
-            return extractUser(rs);
+            if(rs.next()){
+                return extractUser(rs);
+            }
+            return null;
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving user!", e);
         }

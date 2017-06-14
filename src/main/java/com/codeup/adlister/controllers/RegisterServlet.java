@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.utils.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
             User user = new User(
                     request.getParameter("username"),
                     request.getParameter("email"),
-                    password
+                    Password.hashPassword(password)
             );
 
             try {
